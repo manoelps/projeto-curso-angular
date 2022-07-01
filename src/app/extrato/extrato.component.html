@@ -1,0 +1,29 @@
+<section class="container">
+  <h2 class="titulo">Transferências</h2>
+
+  <table class="tabela">
+    <thead class="tabela__cabecalho">
+      <th class="tabela__cabecalho__conteudo">Data</th>
+      <th class="tabela__cabecalho__conteudo">Valor</th>
+      <th class="tabela__cabecalho__conteudo">Destino</th>
+    </thead>
+    <tbody *ngIf="transferencias_extrato?.length > 0; else listaVazia">
+      <tr
+        *ngFor="let transferencia of transferencias_extrato"
+        class="tabela__linha"
+      >
+        <td class="tabela__linha__conteudo">
+          {{ transferencia?.data | date: "short" }}
+        </td>
+        <td class="tabela__linha__conteudo">
+          {{ transferencia?.valor | currency }}
+        </td>
+        <td class="tabela__linha__conteudo">{{ transferencia?.destino }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #listaVazia>
+    <p>Nenuma transferencia cadastrada</p>
+  </ng-template>
+</section>
